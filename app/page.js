@@ -1,113 +1,362 @@
-import Image from "next/image";
+"use client"
+import React, { useState } from 'react'
+import Image from 'next/image'
+import pic from '../public/images/dp.jpg'
+import Customers from './components/Customers'
+import Link from 'next/link'
 
-export default function Home() {
+import { RiMenu2Fill } from "react-icons/ri";
+import { IoHomeOutline } from "react-icons/io5";
+import { FaArrowRight } from "react-icons/fa";
+import { IoMdSearch } from "react-icons/io";
+
+import { IonIcon } from '@ionic/react';
+import { logoIonic, peopleOutline, chatbubbleOutline, homeOutline, helpOutline, lockClosedOutline, settingsOutline, logOutOutline, searchOutline, eyeOutline, cartOutline, cashOutline, notificationsOutline } from 'ionicons/icons';
+
+
+
+
+const page = () => {
+    const [handleDashboard,setHandleDashboar]=useState(false);
+    
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+    
+
+
+   
+    <div className="container"> 
+        <div className={handleDashboard?("navigation active"):"navigation"}>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span className="icon">
+                          
+                            {/* <IonIcon icon={logoIonic}></IonIcon> */}
+                        </span>
+                        <span className='title'><b>Worklin</b> </span>
+                    </a>
+                </li>
+
+                <li>
+                
+                    <a href="#">
+                        <span className="icon">
+                        <IonIcon icon={homeOutline}></IonIcon>
+                        
+                        </span>
+                        <span className="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                     <a href="#">
+                        <span className="icon">
+                            {/* <ion-icon name="people-outline"></ion-icon> */}
+                            <IonIcon icon={peopleOutline}></IonIcon>
+                        </span>
+                        <span className="title">Employees</span>
+                       
+                    </a> 
+                  
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span className="icon">
+                            {/* <ion-icon name="chatbubble-outline"></ion-icon> */}
+                            <IonIcon icon={chatbubbleOutline}></IonIcon>
+                        </span>
+                        <span className="title">Messages</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span className="icon">
+                            {/* <ion-icon name="help-outline"></ion-icon> */}
+                            <IonIcon icon={helpOutline}></IonIcon>
+                        </span>
+                        <span className="title">Help</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span className="icon">
+                            {/* <ion-icon name="settings-outline"></ion-icon> */}
+                            <IonIcon icon={settingsOutline}></IonIcon>
+                        </span>
+                        <span className="title">Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span className="icon">
+                            {/* <ion-icon name="lock-closed-outline"></ion-icon> */}
+                            <IonIcon icon={lockClosedOutline}></IonIcon>
+                        </span>
+                        <span className="title">Password</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span className="icon">
+                            {/* <ion-icon name="log-out-outline"></ion-icon> */}
+                            <IonIcon icon={logOutOutline}></IonIcon>
+                        </span>
+                        <span className="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      
+        <div className={handleDashboard?("main active"):"main"}>
+            <div className="topbar">
+            <div className="toggle" onClick={(e)=>setHandleDashboar(!handleDashboard)}>
+            <RiMenu2Fill />
+                </div>
+                <div className="search">
+                    <label>
+                    <IonIcon icon={searchOutline}></IonIcon> 
+                        <input
+                        
+                        
+                        type="text" placeholder="Search here"/>
+                        
+                    </label>
+                </div>
+  <div><IonIcon icon={notificationsOutline}></IonIcon> </div>
+                <div className="user">
+                
+                    <img src={pic.src} alt="dpp"/>
+                </div>
+            </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        
+            <div className="cardBox">
+                <div className="card">
+                    <div>
+                        <div className="numbers">1,504</div>
+                        <div className="cardName">Daily Views</div>
+                    </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+                    <div className="iconBx">
+                        {/* <ion-icon name="eye-outline"></ion-icon> */}
+                        <IonIcon icon={eyeOutline}></IonIcon>
+                    </div>
+                </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+                <div className="card">
+                    <div>
+                        <div className="numbers">80</div>
+                        <div className="cardName">Sales</div>
+                    </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+                    <div className="iconBx">
+                        {/* <ion-icon name="cart-outline"></ion-icon> */}
+                        <IonIcon icon={cartOutline}></IonIcon>
+                    </div>
+                </div>
+
+                <div className="card">
+                    <div>
+                        <div className="numbers">284</div>
+                        <div className="cardName">Comments</div>
+                    </div>
+
+                    <div className="iconBx">
+                        {/* <ion-icon name="chatbubbles-outline"></ion-icon> */}
+                        <IonIcon icon={chatbubbleOutline}></IonIcon>
+                    </div>
+                </div>
+
+                <div className="card">
+                    <div>
+                        <div className="numbers">$7,842</div>
+                        <div className="cardName">Earning</div>
+                    </div>
+
+                    <div className="iconBx">
+                        {/* <ion-icon name="cash-outline"></ion-icon> */}
+                        <IonIcon icon={cashOutline}></IonIcon>
+                    </div>
+                </div>
+            </div>
+
+    
+            <div className="details">
+                <div className="recentOrders">
+                    <div className="cardHeader">
+                        <h2>Salary Payment</h2>
+                        <a href="#" className="btn">View All</a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Salary</td>
+                                <td>Payment</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Employee </td>
+                                    <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span className="status delivered">Delivered</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$110</td>
+                                <td>Due</td>
+                                <td><span className="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span className="status return">Return</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$620</td>
+                                <td>Due</td>
+                                <td><span className="status inProgress">In Progress</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span className="status delivered">Delivered</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$110</td>
+                                <td>Due</td>
+                                <td><span className="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span className="status return">Return</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Employee</td>
+                                <td>$620</td>
+                                <td>Due</td>
+                                <td><span className="status inProgress">In Progress</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+              
+                <div className="recentCustomers">
+                    <div className="cardHeader">
+                        <h2>Recent Login Employee</h2>
+                    </div>
+
+                    <table>
+                      <tbody>
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt="pic1"/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt="pic2"/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>India</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt=""/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt=""/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>India</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt=""/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt=""/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>India</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt=""/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>Italy</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div className="imgBx"><img src={pic.src} alt=""/></div>
+                            </td>
+                            <td>
+                                <h4>Saurabh <br/> <span>India</span></h4>
+                            </td>
+                      
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+   
+
+    </div>
+  )
 }
+
+export default page
