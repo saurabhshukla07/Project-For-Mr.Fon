@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import pic from '../public/images/dp.jpg'
+import logo from '../public/images/unfluke.jpg'
 import Customers from './components/Customers'
 import Link from 'next/link'
 
@@ -31,10 +32,11 @@ const page = () => {
                 <li>
                     <a href="#">
                         <span className="icon">
-                          
+                          <img style={{height:'5rem', position:'fixed', marginLeft:'1.25rem'}} src={logo.src}></img>
                             {/* <IonIcon icon={logoIonic}></IonIcon> */}
                         </span>
-                        <span className='title'><b>Worklin</b> </span>
+                        {/* logo heading */}
+                        {/* <span className='title'><b>allainz</b> </span> */}
                     </a>
                 </li>
 
